@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @AllArgsConstructor : 모든 멤버변수를 파라미터로 받는 생성자
@@ -18,6 +20,7 @@ public class User extends BaseTimeEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID")
     private Long id;
 
     @Column(nullable = false, length = 20, unique = true)
@@ -28,6 +31,12 @@ public class User extends BaseTimeEntity{
 
     @Column(nullable = false, length = 18)
     private String password;
+
+    @Column(nullable = false, length = 40)
+    private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Posts> posts = new ArrayList<>();
 
 
 }
