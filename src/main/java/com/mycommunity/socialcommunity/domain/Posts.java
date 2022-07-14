@@ -12,7 +12,7 @@ public class Posts extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "POSTS_ID")
-    private String id;
+    private Long id;
 
     @Column(nullable = false, length = 30)
     private String title;

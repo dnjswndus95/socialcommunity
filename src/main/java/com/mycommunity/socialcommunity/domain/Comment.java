@@ -10,7 +10,7 @@ public class Comment extends BaseTimeEntity{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COMMENT_ID")
-    private String id;
+    private Long id;
 
     @Column(name = "COMMENT_CONTENT", nullable = false, length = 40)
     private String content;

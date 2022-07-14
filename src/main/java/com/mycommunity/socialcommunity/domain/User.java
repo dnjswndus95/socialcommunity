@@ -1,6 +1,7 @@
 package com.mycommunity.socialcommunity.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class User extends BaseTimeEntity{
 
     @Id
