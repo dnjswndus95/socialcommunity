@@ -5,14 +5,16 @@ import com.mycommunity.socialcommunity.domain.Posts;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
 
 public class PostsDto {
 
-    @Builder
-    @Data
+    @Getter
+    @RequiredArgsConstructor
     public static class Response{
 
         /**

@@ -30,7 +30,7 @@ public class UserDto {
         private String nickname;
 
         @NotBlank(message = "이메일은 필수입력사항입니다.")
-        @Pattern(regexp = "^(?:\\w+\\.?)*\\w+@(?:\\w+\\.)+\\w+$", message = "이메일 형식이 올바르지 않습니다.")
+        @Email(message = "올바른 이메일 형식이 아닙니다.")
         private String email;
 
         public User toEntity () {

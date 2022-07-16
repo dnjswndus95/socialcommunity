@@ -6,14 +6,16 @@ import com.mycommunity.socialcommunity.domain.Posts;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CommentDto {
 
-    @Data
-    @Builder
+    @Getter
+    @RequiredArgsConstructor
     public static class Response{
         private Long id;
         private String content;
