@@ -1,9 +1,6 @@
 package com.mycommunity.socialcommunity.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
@@ -12,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Posts extends BaseTimeEntity {
@@ -35,5 +33,10 @@ public class Posts extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "posts", cascade = CascadeType.REMOVE)
     private List<Comment> comments = new ArrayList<>();
+
+    public void update(String title, String content){
+        this.title = title;
+        this.content = content;
+    }
 
 }
