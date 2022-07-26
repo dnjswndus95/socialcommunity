@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
 /**
- * Security 설정 클래스
+ *  Security 설정 클래스
  */
 @RequiredArgsConstructor
 @Configuration
