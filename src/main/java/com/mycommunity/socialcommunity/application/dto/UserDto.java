@@ -3,7 +3,11 @@ package com.mycommunity.socialcommunity.application.dto;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 import javax.validation.constraints.*;
+import java.io.Serializable;
 
 public class UserDto {
 
@@ -44,9 +48,23 @@ public class UserDto {
         }
     }
 
-    public static class Response{
-        /**
-         * 이후에 정의..
-         */
+    @Getter  //네트워크를 통해 전송해야 하기 때문에 Serializable로 직렬화
+    public static class Response implements Serializable {
+        private final Long id;
+        private final String username;
+        private final String password;
+        private final String nickname;
+        private final String email;
+        private final String modifiedDate;
+
+        public Response(User user) {
+            this.id = user.getId();
+            this.username = user.getUsername();
+            this.password = user.getPassword();
+            this.nickname = user.getNickname();
+            this.email = user.getEmail();
+            this.modifiedDate = user.getModifiedDate();
+        }
+
     }
 }
