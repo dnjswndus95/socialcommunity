@@ -1,6 +1,7 @@
 package com.mycommunity.socialcommunity.config;
 
 import com.mycommunity.socialcommunity.application.security.auth.CustomUserDetailsService;
+import com.mycommunity.socialcommunity.application.security.auth.KakaoOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final AuthenticationFailureHandler customFailureHandler;
 
     private final CustomOAuth2UserService customOAuth2UserService;
+
+    private final KakaoOAuth2UserService kakaoOAuth2UserService;
 
     @Bean
     public BCryptPasswordEncoder encoder() {
