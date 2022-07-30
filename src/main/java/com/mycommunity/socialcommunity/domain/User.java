@@ -42,5 +42,23 @@ public class User extends BaseTimeEntity{
     @OneToMany(mappedBy = "user")
     private List<Posts> posts = new ArrayList<>();
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+    public String getRoleValue(){
+        return this.role.getValue();
+    }
+
+    public void update(String nickname, String password){
+        this.nickname = nickname;
+        this.password = password;
+    }
+
+    public User updateModifiedDate(){
+        this.onPreUpdate();
+        return this;
+    }
+
 
 }

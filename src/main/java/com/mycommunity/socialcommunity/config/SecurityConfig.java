@@ -1,15 +1,19 @@
 package com.mycommunity.socialcommunity.config;
-
 import com.mycommunity.socialcommunity.application.security.auth.CustomUserDetailsService;
-import com.mycommunity.socialcommunity.application.security.auth.KakaoOAuth2UserService;
+import com.mycommunity.socialcommunity.application.security.oauth.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  *  Security 설정 클래스
@@ -26,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    private final KakaoOAuth2UserService kakaoOAuth2UserService;
+    //private final KakaoOAuth2UserService kakaoOAuth2UserService;
 
     @Bean
     public BCryptPasswordEncoder encoder() {
@@ -48,14 +52,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     /* static 관련설정은 무시 */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web
-                .ignoring().antMatchers( "/css/**", "/js/**", "/img/**");
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
+        http.csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/auth/**", "/posts/read/**", "/posts/search/**").permitAll()
@@ -76,3 +78,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint() // OAuth2 로그인 성공 후 가져올 설정들
                 .userService(customOAuth2UserService); // 서버에서 사용자 정보를 가져온 상태에서 추가로 진행하고자 하는 기능 명시
     }
+
+    /**
+     * SecurityConfig required a bean of type 'org.springframework.security.web.authentication.AuthenticationFailureHandler
+     * 오류발생
+     */
+}

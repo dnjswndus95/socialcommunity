@@ -1,3 +1,4 @@
+/*
 package com.mycommunity.socialcommunity.application.security.auth;
 
 import lombok.RequiredArgsConstructor;
@@ -49,3 +50,4 @@ public class CustomAuthFailureHandler extends SimpleUrlAuthenticationFailureHand
         httpSession.invalidate(); // 세션 삭제
     }
 }
+*/
