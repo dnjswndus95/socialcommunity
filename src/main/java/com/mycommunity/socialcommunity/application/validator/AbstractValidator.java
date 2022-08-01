@@ -1,0 +1,23 @@
+package com.mycommunity.socialcommunity.application.validator;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
+@Slf4j
+public abstract class AbstractValidator<T> implements Validator {
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return true;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        try{
+
+        }
+    }
+
+    protected abstract void doValidate(final T dto, final Errors errors);
+}
