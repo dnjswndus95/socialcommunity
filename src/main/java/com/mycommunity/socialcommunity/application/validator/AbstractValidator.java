@@ -15,7 +15,10 @@ public abstract class AbstractValidator<T> implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         try{
-
+            doValidate((T) target, errors);
+        } catch (IllegalStateException e){
+            log.error("중복 오류", e);
+            throw e;
         }
     }
 

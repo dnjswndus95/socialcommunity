@@ -2,6 +2,7 @@ package com.mycommunity.socialcommunity.config;
 import com.mycommunity.socialcommunity.application.security.auth.CustomUserDetailsService;
 import com.mycommunity.socialcommunity.application.security.oauth.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -30,12 +31,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    //private final KakaoOAuth2UserService kakaoOAuth2UserService;
+    /*@Autowired
+    private AuthenticationManager authenticationManager;*/
 
     @Bean
     public BCryptPasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
+
 
     @Bean
     @Override
@@ -43,13 +46,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    /* 시큐리티가 로그인 과정에서 password를 가로챌때 어떤 해쉬로 암호화 했는지 확인 */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
     }
 
-    /* static 관련설정은 무시 */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
@@ -57,7 +58,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
+        http
+                .csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/auth/**", "/posts/read/**", "/posts/search/**").permitAll()
