@@ -1,5 +1,6 @@
 package com.mycommunity.socialcommunity.application.dto;
 
+import com.mycommunity.socialcommunity.domain.Role;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.Builder;
 import lombok.Data;
@@ -37,6 +38,8 @@ public class UserDto {
         @Email(message = "올바른 이메일 형식이 아닙니다.")
         private String email;
 
+        private Role role;
+
         public User toEntity () {
             return User.builder()
                     .id(id)
@@ -44,6 +47,7 @@ public class UserDto {
                     .password(password)
                     .nickname(nickname)
                     .email(email)
+                    .role(role.USER)
                     .build();
         }
     }
@@ -56,6 +60,7 @@ public class UserDto {
         private final String nickname;
         private final String email;
         private final String modifiedDate;
+        private final Role role;
 
         public Response(User user) {
             this.id = user.getId();
@@ -63,6 +68,7 @@ public class UserDto {
             this.password = user.getPassword();
             this.nickname = user.getNickname();
             this.email = user.getEmail();
+            this.role = user.getRole();
             this.modifiedDate = user.getModifiedDate();
         }
 

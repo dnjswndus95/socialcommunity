@@ -1,7 +1,7 @@
 package com.mycommunity.socialcommunity.controller.repository;
 
+import com.mycommunity.socialcommunity.domain.Role;
 import com.mycommunity.socialcommunity.domain.User;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class UserRepositoryTest {
@@ -36,6 +35,7 @@ class UserRepositoryTest {
                 .username(username)
                 .password(encPassword)
                 .nickname(nickname)
+                .role(Role.USER)
                 .email("xxx@naver.com")
                 .build());
 

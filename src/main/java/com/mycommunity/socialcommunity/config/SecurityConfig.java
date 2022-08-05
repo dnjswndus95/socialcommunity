@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public BCryptPasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
+            return new BCryptPasswordEncoder();
     }
 
 
@@ -56,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
     }
 
+    /** 이게 문제인듯 **/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
