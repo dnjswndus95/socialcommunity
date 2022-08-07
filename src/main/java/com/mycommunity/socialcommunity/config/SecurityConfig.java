@@ -31,8 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomOAuth2UserService customOAuth2UserService;
 
-    /*@Autowired
-    private AuthenticationManager authenticationManager;*/
 
     @Bean
     public BCryptPasswordEncoder encoder() {
