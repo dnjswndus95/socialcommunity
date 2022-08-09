@@ -1,7 +1,7 @@
 package com.mycommunity.socialcommunity.application.service;
 
 import com.mycommunity.socialcommunity.application.dto.UserDto;
-import com.mycommunity.socialcommunity.controller.repository.UserRepository;
+import com.mycommunity.socialcommunity.repository.UserRepository;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,7 +1,7 @@
 package com.mycommunity.socialcommunity.application.security.auth;
 
 import com.mycommunity.socialcommunity.application.dto.UserDto;
-import com.mycommunity.socialcommunity.controller.repository.UserRepository;
+import com.mycommunity.socialcommunity.repository.UserRepository;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

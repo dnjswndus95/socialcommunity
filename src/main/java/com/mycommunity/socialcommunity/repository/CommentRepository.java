@@ -1,4 +1,4 @@
-package com.mycommunity.socialcommunity.controller.repository;
+package com.mycommunity.socialcommunity.repository;
 
 import com.mycommunity.socialcommunity.domain.Comment;
 import com.mycommunity.socialcommunity.domain.User;

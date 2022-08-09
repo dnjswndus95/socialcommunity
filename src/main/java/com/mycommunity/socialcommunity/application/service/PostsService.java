@@ -1,8 +1,8 @@
 package com.mycommunity.socialcommunity.application.service;
 
 import com.mycommunity.socialcommunity.application.dto.PostsDto;
-import com.mycommunity.socialcommunity.controller.repository.PostsRepository;
-import com.mycommunity.socialcommunity.controller.repository.UserRepository;
+import com.mycommunity.socialcommunity.repository.PostsRepository;
+import com.mycommunity.socialcommunity.repository.UserRepository;
 import com.mycommunity.socialcommunity.domain.Posts;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.RequiredArgsConstructor;

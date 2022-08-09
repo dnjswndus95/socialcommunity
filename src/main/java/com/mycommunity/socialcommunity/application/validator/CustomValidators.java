@@ -1,7 +1,7 @@
 package com.mycommunity.socialcommunity.application.validator;
 
 import com.mycommunity.socialcommunity.application.dto.UserDto;
-import com.mycommunity.socialcommunity.controller.repository.UserRepository;
+import com.mycommunity.socialcommunity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

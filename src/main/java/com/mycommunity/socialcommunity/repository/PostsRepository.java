@@ -1,4 +1,4 @@
-package com.mycommunity.socialcommunity.controller.repository;
+package com.mycommunity.socialcommunity.repository;
 
 import com.mycommunity.socialcommunity.domain.Posts;
 import org.springframework.data.domain.Page;

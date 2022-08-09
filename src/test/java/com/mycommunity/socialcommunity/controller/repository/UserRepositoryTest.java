@@ -2,6 +2,7 @@ package com.mycommunity.socialcommunity.controller.repository;
 
 import com.mycommunity.socialcommunity.domain.Role;
 import com.mycommunity.socialcommunity.domain.User;
+import com.mycommunity.socialcommunity.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
