@@ -28,6 +28,7 @@ public class UserService {
       userRepository.save(dto.toEntity());
    }
 
+   // 회원가입 실패 시 유효성 검증 결과를 핸들링
    @Transactional(readOnly = true)
    public Map<String, String> validateHandling(Errors errors){
       Map<String, String> validatorResult = new HashMap<>();
