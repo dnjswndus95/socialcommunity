@@ -6,6 +6,7 @@ import com.mycommunity.socialcommunity.domain.User;
 import lombok.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class PostsDto {
@@ -24,7 +25,7 @@ public class PostsDto {
         private final int view;
         private final User user;
         private final String createdDate, modifiedDate;
-        private final List<Comment> commentList;
+        private final List<CommentDto.Response> commentList;
 
 
         public Response(Posts posts){
@@ -35,7 +36,9 @@ public class PostsDto {
             this.modifiedDate = posts.getModifiedDate();
             this.view = posts.getView();
             this.user = posts.getUser();
-            this.commentList = posts.getComments(); //수정필요
+            //this.commentList = posts.getComments(); //수정필요
+            this.commentList = posts.getComments().stream().map(comment -> new CommentDto.Response()).collect(Collectors.toList());
+            // List에 CommentDto.Response를 받기위해 수정
         }
     }
 

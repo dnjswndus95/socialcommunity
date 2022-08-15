@@ -45,7 +45,13 @@ public class PostsService {
         return postsRepository.findAll(pageable);
     }
 
+    @Transactional
+    public PostsDto.Response findById(Long id){
+        Posts post = postsRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("해당 게시글이 존재하지않습니다."));
 
+        return new PostsDto.Response(post);
+    }
 
 
 }
