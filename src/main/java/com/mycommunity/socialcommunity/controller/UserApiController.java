@@ -26,6 +26,7 @@ public class UserApiController {
      * HttpHeader, HttpBody를 포함한 클래스
      * 응답과 요청에 HttpStatus와 HttpBody로 message 전달 가능
      *
+     *  ** ResponseEntity 는 status field 를 가지기 때문에 상태코드는 필수적으로 리턴해줘야 한다.
      **/
     @PutMapping("/api/user")
     public ResponseEntity<String> modify(@RequestBody UserDto.Request dto){

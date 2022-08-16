@@ -57,7 +57,48 @@ public class PostsIndexController { // 게시글 화면 컨트롤러
         PostsDto.Response post = postsService.findById(id);
         List<CommentDto.Response> comments = post.getCommentList();
 
-        // 여기까지
-        if()
+        if(!comments.isEmpty() && comments != null)
+            model.addAttribute("comments", comments);
+
+        if(post.getUserId().equals(user.getId())){
+            model.addAttribute("writer", true);
+        }
+
+        if(comments.stream().anyMatch(c -> c.getUserId().equals(user.getId())))
+            model.addAttribute("isCommentWriter", true);
+
+        model.addAttribute("posts", post);
+        return "posts/posts-read";
+    }
+
+    @GetMapping("/posts/update/{id}")
+    public String update(Model model, @PathVariable Long id, @LoginUser UserDto.Response user){
+        PostsDto.Response posts = postsService.findById(id);
+
+        if(user != null)
+            model.addAttribute("user", user);
+
+        model.addAttribute("posts", posts);
+
+        return "posts/posts-update";
+    }
+
+    @GetMapping("/posts/search/{id}")
+    public String search(Model model, String keyword,
+                         @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                         @LoginUser UserDto.Response user) {
+        Page<Posts> searchList = postsService.search(keyword, pageable);
+
+        if(user != null)
+            model.addAttribute("user", user);
+
+        model.addAttribute("searchList", searchList);
+        model.addAttribute("keyword", keyword);
+        model.addAttribute("previous", pageable.previousOrFirst().getPageNumber());
+        model.addAttribute("next", pageable.next().getPageNumber());
+        model.addAttribute("hasPrevious", searchList.hasPrevious());
+        model.addAttribute("hasNext", searchList.hasNext());
+
+        return "posts/posts-search";
     }
 }
