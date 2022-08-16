@@ -53,5 +53,17 @@ public class PostsService {
         return new PostsDto.Response(post);
     }
 
+    @Transactional(readOnly = true)
+    public Page<Posts> search(String keyword, Pageable pageable){
+        Page<Posts> postsList = postsRepository.findByTitleIgnoreCaseContaining(keyword, pageable);
+        return postsList;
+    }
+
+    @Transactional
+    public void delete(Long id){
+        Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다."));
+        postsRepository.delete(posts);
+    }
+
 
 }

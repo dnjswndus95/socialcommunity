@@ -23,7 +23,7 @@ public class PostsDto {
         private final String title;
         private final String content;
         private final int view;
-        private final User user;
+        private final Long userId;
         private final String createdDate, modifiedDate;
         private final List<CommentDto.Response> commentList;
 
@@ -35,7 +35,7 @@ public class PostsDto {
             this.createdDate = posts.getCreatedDate();
             this.modifiedDate = posts.getModifiedDate();
             this.view = posts.getView();
-            this.user = posts.getUser();
+            this.userId = posts.getUser().getId();
             //this.commentList = posts.getComments(); //수정필요
             this.commentList = posts.getComments().stream().map(comment -> new CommentDto.Response()).collect(Collectors.toList());
             // List에 CommentDto.Response를 받기위해 수정

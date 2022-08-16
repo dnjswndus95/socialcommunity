@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostsRepository extends JpaRepository<Posts, Long> {
 
-    Page<Posts> findByTitle(String keyword, Pageable pageable);
+    // IgnoreCase로 영어 대소문자 구분없이 쿼리가 나가게
+    Page<Posts> findByTitleIgnoreCaseContaining(String keyword, Pageable pageable);
 }
