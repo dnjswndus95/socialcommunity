@@ -54,6 +54,7 @@ public class PostsDto {
         private User user;
         // 생성할때 용도로 쓰기 때문에 List<Comment>는 받지않음.
 
+
         public Posts toEntity(){
             return Posts.builder()
                     .id(id)
