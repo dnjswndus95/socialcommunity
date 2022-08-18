@@ -48,11 +48,11 @@ public class UserController {
 
     @GetMapping("/auth/join")
     public String join(){
-        return "/user/join";
+        return "/user/user-join";
     }
 
-    @PostMapping("/auth/joinMemberShip")
-    public String joinMemberShip(@Valid UserDto.Request dto, Errors errors, Model model){
+    @PostMapping("/auth/joinProc")
+    public String joinProc(@Valid UserDto.Request dto, Errors errors, Model model){
         if (errors.hasErrors()){
             model.addAttribute("userDto", dto); // 회원가입을 실패하더라도 입력 데이터는 그대로 보존
 
@@ -62,7 +62,7 @@ public class UserController {
                 // 어떤 필드때문에 실패했는지 찾아서 model에 저장
             }
 
-            return "/user/join"; // 회원가입 페이지로 다시 돌아간다
+            return "/user/user-join"; // 회원가입 페이지로 다시 돌아간다
         }
 
         // 실패하지 않았다면
@@ -78,7 +78,7 @@ public class UserController {
         model.addAttribute("error", error);
         model.addAttribute("exception", exception);
 
-        return "/user/login";
+        return "/user/user-login";
     }
 
     @GetMapping("/logout")  // Post가 아닌 Get을 하는 이유는 CSRF 방지 | CSRF 토큰을 사용해도 되지만 CSRF 토큰을 사용하지 않을 경우 GetMapping으로 로그아웃 처리
@@ -96,6 +96,6 @@ public class UserController {
         if(user != null){
             model.addAttribute("user", user);
         }
-        return "/user/modify";
+        return "/user/user-modify";
     }
 }
