@@ -79,9 +79,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint() // OAuth2 로그인 성공 후 가져올 설정들
                 .userService(customOAuth2UserService); // 서버에서 사용자 정보를 가져온 상태에서 추가로 진행하고자 하는 기능 명시
     }
-
-    /**
-     * SecurityConfig required a bean of type 'org.springframework.security.web.authentication.AuthenticationFailureHandler
-     * 오류발생
-     */
 }

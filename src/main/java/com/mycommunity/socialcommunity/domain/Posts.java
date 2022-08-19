@@ -27,7 +27,7 @@ public class Posts extends BaseTimeEntity {
     private int view;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_posts_user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "posts", cascade = CascadeType.REMOVE)
