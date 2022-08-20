@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 public class PostsDto {
 
     @Getter
-    @RequiredArgsConstructor
     public static class Response{
 
         /**
@@ -27,11 +26,14 @@ public class PostsDto {
         private final String createdDate, modifiedDate;
         private final List<CommentDto.Response> commentList;
 
+        // writer 추가
+        private final String writer;
 
         public Response(Posts posts){
             this.id = posts.getId();
             this.title = posts.getTitle();
             this.content = posts.getContent();
+            this.writer = posts.getWriter();
             this.createdDate = posts.getCreatedDate();
             this.modifiedDate = posts.getModifiedDate();
             this.view = posts.getView();
@@ -52,6 +54,7 @@ public class PostsDto {
         private int view;
         private String createdDate, modifiedDate;
         private User user;
+        private String writer;
         // 생성할때 용도로 쓰기 때문에 List<Comment>는 받지않음.
 
 
@@ -62,6 +65,7 @@ public class PostsDto {
                     .content(content)
                     .view(0)
                     .user(user)
+                    .writer(writer)
                     .build();
         }
     }

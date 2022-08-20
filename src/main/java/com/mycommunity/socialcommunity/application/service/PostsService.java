@@ -65,5 +65,10 @@ public class PostsService {
         postsRepository.delete(posts);
     }
 
+    @Transactional
+    public int updateView(Long id){
+        return postsRepository.updateView(id);
+    }
+
 
 }

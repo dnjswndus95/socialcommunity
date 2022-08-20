@@ -49,11 +49,12 @@ public class PostsIndexController { // 게시글 화면 컨트롤러
         if(user != null)
             model.addAttribute("user", user);
 
+        log.info("user = " + user);
         return "posts/posts-write";
     }
 
     @GetMapping("/posts/read/{id}")
-    public String read( Model model, @PathVariable Long id, @LoginUser UserDto.Response user){
+    public String read(Model model, @PathVariable Long id, @LoginUser UserDto.Response user){
         PostsDto.Response post = postsService.findById(id);
         List<CommentDto.Response> comments = post.getCommentList();
 
@@ -67,6 +68,7 @@ public class PostsIndexController { // 게시글 화면 컨트롤러
         if(comments.stream().anyMatch(c -> c.getUserId().equals(user.getId())))
             model.addAttribute("isCommentWriter", true);
 
+        postsService.updateView(id);
         model.addAttribute("posts", post);
         return "posts/posts-read";
     }
