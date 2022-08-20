@@ -55,9 +55,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations())
                 .antMatchers("/css/**", "/js/**", "/img/**", "/favicon.ico", "/error", "/resources/**");
+        // 로그인 로그아웃시 나타날 페이지에 사용될 정적자원들에 대한 접근이 불가능
+        // -> 정적 페이지에 대한 인증없이 접근을 허가하기 위해서 /error 추가
     }
 
-    /** 이게 문제인듯 **/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
