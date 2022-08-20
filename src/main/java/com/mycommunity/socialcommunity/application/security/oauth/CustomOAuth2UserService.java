@@ -21,6 +21,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User> {
+
     private final UserRepository userRepository;
     private final HttpSession httpSession;
 
@@ -57,6 +58,10 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                 .map(User::updateModifiedDate)
                 .orElse(attributes.toEntity());
 
+        // nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement 에러
+        // status code 500
+        // registration id : google, usernameAttributeName : sub 라고 뜸
+        // password cannot be null
         return userRepository.save(user);
     }
 }
