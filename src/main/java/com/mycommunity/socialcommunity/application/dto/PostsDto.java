@@ -47,6 +47,7 @@ public class PostsDto {
     @Getter
     @Data
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Request{
         private Long id;
         private String title;
