@@ -1,5 +1,6 @@
 package com.mycommunity.socialcommunity.application.security.oauth;
 
+import com.mycommunity.socialcommunity.domain.Role;
 import com.mycommunity.socialcommunity.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,11 +22,11 @@ import java.util.Map;
 public class OAuthAttributes {
 
     private Map<String, Object> attributes; // OAuth2에서 JSON으로 반환하기 때문에 Map을 사용.
-
     private String nameAttributeKey;
     private String username;
     private String nickname;
     private String email;
+    private Role role;
 
     public static OAuthAttributes of(String registrationId,
                                       String userNameAttributeName,
@@ -70,6 +71,7 @@ public class OAuthAttributes {
                 .username(email)
                 .email(email)
                 .nickname(nickname)
+                .role(Role.SOCIAL)
                 .build();
     }
 

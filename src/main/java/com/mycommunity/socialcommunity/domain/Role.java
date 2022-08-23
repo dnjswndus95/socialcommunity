@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum Role {
     USER("ROLE_USER"),
     ADMIN("ROLE_ADMIN"),
-    COMMENT("ROLE_COMMENT");
+    SOCIAL("ROLE_SOCIAL");
 
     private final String value;
 }
