@@ -1,4 +1,5 @@
 package com.mycommunity.socialcommunity.config;
+import com.mycommunity.socialcommunity.application.security.auth.CustomAuthFailureHandler;
 import com.mycommunity.socialcommunity.application.security.auth.CustomUserDetailsService;
 import com.mycommunity.socialcommunity.application.security.oauth.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
@@ -27,11 +28,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomUserDetailsService customUserDetailsService;
-
-    private final AuthenticationFailureHandler customFailureHandler;
-
     private final CustomOAuth2UserService customOAuth2UserService;
-
+    private final AuthenticationFailureHandler customFailureHandler;
 
     @Bean
     public BCryptPasswordEncoder encoder() {
@@ -62,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
+                .csrf().ignoringAntMatchers("/api/**") //* REST API 사용 예외처리 *//*
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/auth/**", "/posts/read/**", "/posts/search/**").permitAll()
@@ -81,6 +79,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint() // OAuth2 로그인 성공 후 가져올 설정들
-                .userService(customOAuth2UserService); // 서버에서 사용자 정보를 가져온 상태에서 추가로 진행하고자 하는 기능 명시
+                .userService(customOAuth2UserService); // 서버에서 사용자 정보를 가져온 상태에서 추가로 진행하고자 하는 기능 명시*/
     }
 }

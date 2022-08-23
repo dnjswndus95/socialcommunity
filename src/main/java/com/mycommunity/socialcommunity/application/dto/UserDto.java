@@ -2,10 +2,7 @@ package com.mycommunity.socialcommunity.application.dto;
 
 import com.mycommunity.socialcommunity.domain.Role;
 import com.mycommunity.socialcommunity.domain.User;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
@@ -19,6 +16,8 @@ public class UserDto {
 
     @Data
     @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class Request {
         private Long id;
 
