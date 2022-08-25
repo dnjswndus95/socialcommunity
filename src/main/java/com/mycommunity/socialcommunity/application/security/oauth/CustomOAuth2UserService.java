@@ -39,9 +39,12 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                                             .getUserInfoEndpoint()
                                             .getUserNameAttributeName();
 
+        log.info("=============================================");
         log.info("userNameAttributeName : " + userNameAttributes);
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributes, oAuth2User.getAttributes());
+        log.info("=============================================");
+        log.info("getAttributes(): " + attributes.getAttributes());
 
         User user = saverOrUpdate(attributes);
 
