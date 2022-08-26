@@ -1,18 +1,26 @@
 package com.mycommunity.socialcommunity.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-public class Comment extends BaseTimeEntity{
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class Comment{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 글 들어가보면 Unknown column 'comments0_.comment_id' in 'field list'
     private Long id;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -22,6 +30,20 @@ public class Comment extends BaseTimeEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "created_date")
+    @CreatedDate
+    private String createdDate;
+
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private String modifiedDate;
+
+    public void update(String content){
+        this.content = content;
+    }
+
+
 
 
 }
