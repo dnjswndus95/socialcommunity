@@ -38,9 +38,8 @@ public class PostsDto {
             this.modifiedDate = posts.getModifiedDate();
             this.view = posts.getView();
             this.userId = posts.getUser().getId();
-            //this.commentList = posts.getComments(); //수정필요
             this.commentList = posts.getComments().stream().map(comment -> new CommentDto.Response()).collect(Collectors.toList());
-            // List에 CommentDto.Response를 받기위해 수정
+            //List에 CommentDto.Response를 받기위해 수정
         }
     }
 
@@ -56,8 +55,7 @@ public class PostsDto {
         private String createdDate, modifiedDate;
         private User user;
         private String writer;
-        // 생성할때 용도로 쓰기 때문에 List<Comment>는 받지않음.
-
+        // 생성, 수정 할때 용도로 쓰기 때문에 List<Comment>는 받지않음.
 
         public Posts toEntity(){
             return Posts.builder()

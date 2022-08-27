@@ -17,7 +17,6 @@ import javax.persistence.*;
 public class Comment{
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // 글 들어가보면 Unknown column 'comments0_.comment_id' in 'field list'
     private Long id;
 
     @Column(nullable = false, columnDefinition = "TEXT")
