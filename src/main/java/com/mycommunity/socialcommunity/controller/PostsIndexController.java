@@ -85,7 +85,7 @@ public class PostsIndexController { // 게시글 화면 컨트롤러
         return "posts/posts-update";
     }
 
-    @GetMapping("/posts/search/{id}")
+    @GetMapping("/posts/search")
     public String search(Model model, String keyword,
                          @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
                          @LoginUser UserDto.Response user) {

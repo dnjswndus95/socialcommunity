@@ -28,12 +28,12 @@
 
     {{! Search Paging }}
     <div class="pagination justify-content-center">
-        {{#hasPrev}}
+        {{#hasPrevious}}
             <a href="/posts/search?keyword={{keyword}}&page={{previous}}" role="button" class="btn btn-lg bi bi-caret-left-square-fill"></a>
-        {{/hasPrev}}
-        {{^hasPrev}}
+        {{/hasPrevious}}
+        {{^hasPrevious}}
             <a href="/posts/search?keyword={{keyword}}&page={{previous}}" role="button" class="btn btn-lg bi bi-caret-left-square-fill disabled"></a>
-        {{/hasPrev}}
+        {{/hasPrevious}}
 
         {{#hasNext}}
             <a href="/posts/search?keyword={{keyword}}&page={{next}}" role="button" class="btn btn-lg bi bi-caret-right-square-fill"></a>
