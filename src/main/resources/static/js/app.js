@@ -163,11 +163,11 @@ const main = {
     commentSave : function () {
         const data = {
             postsId: $('#postsId').val(),
-            comment: $('#comment').val()
+            content: $('#content').val()
         }
 
         // 공백 및 빈 문자열 체크
-        if (!data.comment || data.comment.trim() === "") {
+        if (!data.content || data.content.trim() === "") {
             alert("공백 또는 입력하지 않은 부분이 있습니다.");
             return false;
         } else {

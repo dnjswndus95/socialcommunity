@@ -38,8 +38,9 @@ public class User extends BaseTimeEntity{
     @Column(nullable = false, length = 40)
     private String email;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    /*@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Posts> posts = new ArrayList<>();
+    */
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

@@ -8,6 +8,7 @@ import com.mycommunity.socialcommunity.repository.CommentRepository;
 import com.mycommunity.socialcommunity.repository.PostsRepository;
 import com.mycommunity.socialcommunity.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class CommentService {
 
     private final UserRepository userRepository;
@@ -31,8 +33,12 @@ public class CommentService {
         dto.setUser(user);
         dto.setPosts(posts);
 
+
+
         Comment comment = dto.toEntity();
+        log.info("댓글 내용 : " + comment.getContent());
         commentRepository.save(comment);
+
 
         return comment.getId();
     }

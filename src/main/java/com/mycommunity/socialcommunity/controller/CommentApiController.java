@@ -5,11 +5,13 @@ import com.mycommunity.socialcommunity.application.dto.UserDto;
 import com.mycommunity.socialcommunity.application.security.auth.LoginUser;
 import com.mycommunity.socialcommunity.application.service.CommentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/api")
 @RestController
@@ -20,6 +22,7 @@ public class CommentApiController {
     @PostMapping("/posts/{id}/comments")
     public ResponseEntity save(@PathVariable Long id, @RequestBody CommentDto.Request dto,
                                @LoginUser UserDto.Response user){
+        log.info("댓글 내용 : " + dto.getContent());
         return ResponseEntity.ok((commentService.save(id, user.getNickname(), dto)));
     }
 
