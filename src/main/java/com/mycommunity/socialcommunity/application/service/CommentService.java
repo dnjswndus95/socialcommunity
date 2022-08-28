@@ -49,7 +49,7 @@ public class CommentService {
 
         List<Comment> comments = posts.getComments();
 
-        return comments.stream().map(comment -> new CommentDto.Response()).collect(Collectors.toList());
+        return comments.stream().map(comment -> new CommentDto.Response(comment)).collect(Collectors.toList());
     }
 
     @Transactional
