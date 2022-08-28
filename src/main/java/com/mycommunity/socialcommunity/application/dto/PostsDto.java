@@ -13,7 +13,6 @@ public class PostsDto {
 
     @Getter
     public static class Response{
-
         /**
          * 게시글 정보를 응답하기만 하는 클래스이므로
          * Posts의 정보를 받아 final로 init해주고 수정방지.
@@ -25,7 +24,6 @@ public class PostsDto {
         private final Long userId;
         private final String createdDate, modifiedDate;
         private final List<CommentDto.Response> commentList;
-
         // writer 추가
         private final String writer;
 
@@ -38,7 +36,7 @@ public class PostsDto {
             this.modifiedDate = posts.getModifiedDate();
             this.view = posts.getView();
             this.userId = posts.getUser().getId();
-            this.commentList = posts.getComments().stream().map(comment -> new CommentDto.Response()).collect(Collectors.toList());
+            this.commentList = posts.getComments().stream().map(comment -> new CommentDto.Response(comment)).collect(Collectors.toList());
             //List에 CommentDto.Response를 받기위해 수정
         }
     }

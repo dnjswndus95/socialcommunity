@@ -18,17 +18,19 @@ public class CommentDto {
         private String content;
         private Long userId;
         private Long postsId;
+        private String nickname;
 
-        private String createdDate;
-        private String modifiedDate;
+        private String createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
+        private String modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
 
         public Response(Comment comment){
             this.id = comment.getId();
             this.content = comment.getContent();
 
-            this.createdDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
-            this.modifiedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm"));
+            this.createdDate = comment.getCreatedDate();
+            this.modifiedDate = comment.getModifiedDate();
 
+            this.nickname = comment.getUser().getNickname();
             this.userId = comment.getUser().getId();
             this.postsId = comment.getPosts().getId();
         }

@@ -34,7 +34,6 @@ public class CommentService {
         dto.setPosts(posts);
 
 
-
         Comment comment = dto.toEntity();
         log.info("댓글 내용 : " + comment.getContent());
         commentRepository.save(comment);

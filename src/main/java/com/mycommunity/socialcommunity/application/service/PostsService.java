@@ -26,7 +26,6 @@ public class PostsService {
         dto.setUser(user);
         Posts posts = dto.toEntity();
         postsRepository.save(posts);
-        log.info("PostsService.save()");
 
         return posts.getId();
     }
@@ -45,7 +44,7 @@ public class PostsService {
         return postsRepository.findAll(pageable);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public PostsDto.Response findById(Long id){
         Posts post = postsRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("해당 게시글이 존재하지않습니다."));

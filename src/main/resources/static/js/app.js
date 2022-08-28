@@ -190,7 +190,7 @@ const main = {
         const data = {
             id: form.querySelector('#id').value,
             postsId: form.querySelector('#postsId').value,
-            comment: form.querySelector('#comment-content').value,
+            content: form.querySelector('#comment-content').value,
             writerUserId: form.querySelector('#writerUserId').value,
             sessionUserId: form.querySelector('#sessionUserId').value
         }
@@ -202,7 +202,7 @@ const main = {
             return false;
         }
 
-        if (!data.comment || data.comment.trim() === "") {
+        if (!data.content || data.content.trim() === "") {
             alert("공백 또는 입력하지 않은 부분이 있습니다.");
             return false;
         }

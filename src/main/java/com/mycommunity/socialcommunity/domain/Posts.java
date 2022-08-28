@@ -35,7 +35,7 @@ public class Posts extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @OrderBy("id asc")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comments;
 
     public void update(String title, String content){
         this.title = title;

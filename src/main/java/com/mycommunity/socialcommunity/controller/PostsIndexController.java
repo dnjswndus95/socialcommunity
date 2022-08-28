@@ -58,9 +58,10 @@ public class PostsIndexController { // 게시글 화면 컨트롤러
         PostsDto.Response post = postsService.findById(id);
         List<CommentDto.Response> comments = post.getCommentList();
 
-        if(!comments.isEmpty() && comments != null)
+        if(!comments.isEmpty() && comments != null) {
+            log.info("comments 비어있지 않음~");
             model.addAttribute("comments", comments);
-
+        }
         if(user != null) {
             model.addAttribute("user", user);
 
@@ -68,9 +69,9 @@ public class PostsIndexController { // 게시글 화면 컨트롤러
                 model.addAttribute("writer", true);
             }
 
-            if (comments.stream().anyMatch(c -> c.getUserId().equals(user.getId())))
+            if (comments.stream().anyMatch(s -> s.getUserId().equals(user.getId()))) {
                 model.addAttribute("isCommentWriter", true);
-
+            }
         }
         postsService.updateView(id);
         model.addAttribute("posts", post);
